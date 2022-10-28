@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            left: 300px;
+            top: 1500px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div style="height: 3000px;">
+        <div class="box" style="opacity: 0.3;"></div>
+    </div>
+    <script>
+        var div = document.getElementsByClassName('box')[0];
+        var key = true;
+        window.onscroll = function(){
+            if(div.offsetTop <= window.innerHeight + window.pageYOffset && key === true){
+             var timer = setInterval(function(){
+                 console.log(div.style.opacity)
+                 div.style.opacity = parseFloat(div.style.opacity) + 0.001
+                 if(div.style.opacity >= 1){
+                     clearInterval(timer);
+                     key = false;
+                 }
+             },30)
+        }
+       }
+
+    </script>
+</body>
+</html>
